@@ -8,7 +8,7 @@ namespace XamSQLite.Database
     public class Constants
 
     {
-        public const string dbName = "Products.db3";
+        public const string dbName = "Pokemons.db3";
 
         public const SQLite.SQLiteOpenFlags Flags = SQLite.SQLiteOpenFlags.ReadWrite |
             SQLite.SQLiteOpenFlags.Create | SQLite.SQLiteOpenFlags.SharedCache;

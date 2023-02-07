@@ -8,7 +8,7 @@ using XamSQLite.Models;
 
 namespace XamSQLite.Database
 {
-    public class ProductDatabase
+    public class PokemonDatabase
     {
         static readonly Lazy<SQLiteAsyncConnection> lazyInitializer = new Lazy<SQLiteAsyncConnection>(() =>
         {
@@ -18,7 +18,7 @@ namespace XamSQLite.Database
         static SQLiteAsyncConnection Database => lazyInitializer.Value;
         static bool initialized = false;
 
-        public ProductDatabase()
+        public PokemonDatabase()
         {
             InitializeAsync().SafeFireAndForget(false);
         }
@@ -27,29 +27,29 @@ namespace XamSQLite.Database
         {
             if (!initialized)
             {
-                if (!Database.TableMappings.Any(m => m.MappedType.Name == typeof(Products).Name))
-                    await Database.CreateTablesAsync(CreateFlags.None, typeof(Products)).ConfigureAwait(false);
-                
+                if (!Database.TableMappings.Any(m => m.MappedType.Name == typeof(Pokemon).Name))
+                    await Database.CreateTablesAsync(CreateFlags.None, typeof(Pokemon)).ConfigureAwait(false);
+
                 initialized = true;
             }
         }
 
-        public  Task<List<Products>> getProducts()
+        public Task<List<Pokemon>> GetPokemonsFromDatabase()
         {
-            return Database.Table<Products>().ToListAsync();
+            return Database.Table<Pokemon>().ToListAsync();
         }
 
-        public Task<int> saveProduct(Products product)
+        public Task<int> SavePokemonInDatabase(Pokemon pokemon)
         {
-            if (product.ID == 0)
-                return Database.InsertAsync(product);
+            if (pokemon.ID == 0)
+                return Database.InsertAsync(pokemon);
             else
-                return Database.UpdateAsync(product);
+                return Database.UpdateAsync(pokemon);
         }
 
-        public Task<int> deleteProduct(Products product)
+        public Task<int> DeletePokemonFromDatabase(Pokemon pokemon)
         {
-            return Database.DeleteAsync(product);
+            return Database.DeleteAsync(pokemon);
         }
     }
 }

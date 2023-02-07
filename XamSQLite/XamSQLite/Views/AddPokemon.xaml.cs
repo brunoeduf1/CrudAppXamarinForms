@@ -7,14 +7,14 @@ using XamSQLite.ViewModels;
 namespace XamSQLite.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddProduct : ContentPage
+    public partial class AddPokemon : ContentPage
     {
-        public AddProduct(Products product)
+        public AddPokemon(Pokemon pokemon)
         {
             try
             {
                 InitializeComponent();
-                VMAddProduct vm = new VMAddProduct(product);
+                AddPokemonViewModel vm = new AddPokemonViewModel(pokemon);
                 this.BindingContext = vm;
             }
             catch(Exception ex)
