@@ -78,7 +78,7 @@
                    HorizontalOptions="Center"
                    Margin="2"/>
             <Button x:Name="btnAddPokemon" Text="Add New Pokemon" Clicked="btnAddPokemon_Clicked"
-                    Margin="2" CornerRadius="15"
+                    Margin="2" CornerRadius="2"
                     Grid.Row="2" Grid.Column="0" BackgroundColor="#00BFFF" TextColor="#fff"/>
 
         </Grid>
