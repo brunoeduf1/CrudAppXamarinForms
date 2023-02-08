@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrudPokemonForms.Views.AddPokemon"
+             Title="ADD POKEMON"
+             Visual="Material"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                     Padding="10">
+
+            <Entry Text="{Binding pokemon.ID}" Margin="0" FontSize="1" IsVisible="false" 
+                   HorizontalOptions="FillAndExpand"/>
+            
+            <Label Text="Pokemon Name or ID:" Margin="2"/>
+            <Entry Text="{Binding pokemon.Name}" Margin="2,2,2,5" HorizontalOptions="FillAndExpand" />
+
+            <Label Text="{Binding lblInfo}" Margin="2,2,2,5"/>
+
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="ADD" x:Name="btnSave" HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#00BFFF" TextColor="#fff"
+                        Margin="2" Grid.Column="0" Grid.Row="0" Command="{Binding btnSavePokemon}"/>
+
+                <Button Text="CLEAR" x:Name="btnClear" HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#bfbfbf" TextColor="#fff"
+                        Margin="2" Grid.Column="1" Grid.Row="0" Command="{Binding btnClearPokemon}"/>
+            </Grid>
+
+            <ActivityIndicator x:Name="actInd"
+                             IsRunning="{Binding isLoading}"
+                             IsVisible="{Binding isLoading}" Color="#00BFFF" VerticalOptions="CenterAndExpand"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

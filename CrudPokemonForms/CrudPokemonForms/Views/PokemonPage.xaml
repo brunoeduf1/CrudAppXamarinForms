@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrudPokemonForms.Views.PokemonPage"
+             Visual="Material"
+             Title="Pokemons"
+             Background="White">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="lstPokemon" ItemsSource="{Binding lstPokemon}"
+                      BackgroundColor="Transparent" HasUnevenRows="True"
+                      RowHeight="100" SeparatorColor="Black" SeparatorVisibility="Default"
+                      Grid.Row="0" Grid.Column="0" Margin="2" ItemSelected="lstPokemon_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button BackgroundColor="#fff" TextColor="#B0C4DE" FontAttributes="Bold"
+                                        HorizontalOptions="Center" VerticalOptions="FillAndExpand"
+                                        Grid.Column="1" x:Name="btnDeletePokemon" 
+                                        Clicked="btnDeletePokemon_Clicked"
+                                        CommandParameter="{Binding ID}" Text="-" FontSize="40"/>
+                                
+                                <StackLayout HorizontalOptions="FillAndExpand" Margin="0" 
+                                         VerticalOptions="StartAndExpand" Grid.Column="0">
+
+                                    <StackLayout Margin="1,0" Orientation="Horizontal" 
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="Start">
+                                        <Label Text="Pokemon name: " Margin="1,0" FontSize="Medium"/>
+                                        <Label Text="{Binding Name}" VerticalTextAlignment="Center"  Margin="1,0"
+                                           FontAttributes="Bold" FontSize="Medium"
+                                       HorizontalOptions="StartAndExpand"/>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="1,0" Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="Start">
+                                        <Label Text="Base experience: " Margin="1,0" FontSize="Medium" />
+                                        <Label Text="{Binding base_experience}" VerticalTextAlignment="Center"  Margin="1,0"
+                                       HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="1,0" Orientation="Horizontal" 
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="Start">
+                                        <Label Text="Height: " Margin="1,0" FontSize="Medium"/>
+                                        <Label Text="{Binding height}" VerticalTextAlignment="Center"  Margin="1,0"
+                                       HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="1,0" Orientation="Horizontal" 
+                                         HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="Start">
+                                        <Label Text="Weight: " Margin="1,0" FontSize="Medium"/>
+                                        <Label Text="{Binding weight}" VerticalTextAlignment="Center"  Margin="1,0"
+                                       HorizontalOptions="StartAndExpand" FontSize="Medium"/>
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label Text="{Binding lblInfo}" Grid.Row="1" Grid.Column="0"
+                   HorizontalOptions="Center"
+                   Margin="2"/>
+            <Button x:Name="btnAddPokemon" Text="Add New Pokemon" Clicked="btnAddPokemon_Clicked"
+                    Margin="2" CornerRadius="15"
+                    Grid.Row="2" Grid.Column="0" BackgroundColor="#00BFFF" TextColor="#fff"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
